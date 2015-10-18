@@ -14,10 +14,12 @@ import android.widget.Toast;
 public class subActivity extends Activity {
     String nom;  //per guardar les dades rebudes de l'Activity principal
     String sexe;  //per guardar les dades rebudes de l'Activity principal
+    String carnet; //per guardar les dades rebudes del switch de l'Activity principal
+    String valora; //per guardar les dades rebudes del ratingbar de l'Activity principal
+    String punts;//per guardar les dades rebudes del seekbar de l'Activity principal
+    String missatge;//per guardar les dades rebudes de l'Activity principal
 
-    String missatge;
-
-    TextView tv_benvinguda;
+    TextView tv_benvinguda, tVValor,tVNumValor,tVPunt, tVNumPunt, tVCarnet, tVCoch;
     Button acabar;
     EditText edat;
 
@@ -34,10 +36,29 @@ public class subActivity extends Activity {
         //Enllacem el EditText de l'xml amb un objecte EditText de Java
         edat = (EditText) findViewById(R.id.etedat);
 
+        //Enllacem els TextView de l'xml amb objectes TextView de Java
+        tVValor = (TextView) findViewById(R.id.tVValor);
+        tVPunt = (TextView) findViewById(R.id.tVPunt);
+        tVNumValor = (TextView) findViewById(R.id.tVNumvalor);
+        tVNumPunt = (TextView) findViewById(R.id.tVNumPunt);
+        tVCarnet = (TextView) findViewById(R.id.tVCarnet);
+        tVCoch = (TextView) findViewById(R.id.tVCoch);
+
+
         // Recollim els paràmatres que venen de l'Activity principal (si en ve algun)
         Bundle b = getIntent().getExtras();
         if (b!=null){
             nom = b.getString("Nom");
+
+            carnet = b.getString("Carnet");
+            tVCoch.setText(carnet.toString());
+
+            punts = b.getString("Puntos");
+            tVNumPunt.setText(punts.toString());
+
+            valora=b.getString("Valoración");
+            tVNumValor.setText(valora.toString());
+
             sexe = b.getString("Sexe");
             if(sexe.compareTo("Mascle")==0){
                 missatge="Hola en "+nom+", indica'ns les següents dades:";

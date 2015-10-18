@@ -3,12 +3,16 @@ package dam.pmdm.parametres;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +22,10 @@ public class Principal extends Activity {
     EditText nom;
     RadioGroup radioGroupSexe;
     TextView dadesRebudes;
+    Switch conducir;
+    RatingBar valorar;
+    SeekBar puntua;
+
 
     final int SUBACTIVITY_1=1;
 
@@ -30,6 +38,9 @@ public class Principal extends Activity {
         nom = (EditText) findViewById(R.id.et_nom);
         radioGroupSexe = (RadioGroup) findViewById(R.id.rg_sexe);
         dadesRebudes = (TextView) findViewById(R.id.tv_dades_rebudes);
+        conducir = (Switch) findViewById(R.id.swConducir);
+        valorar = (RatingBar) findViewById(R.id.rBValorar);
+        puntua = (SeekBar) findViewById(R.id.sBPuntua);
 
         //Afegim un Listener al botó
         botoEnviaDades.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +64,27 @@ public class Principal extends Activity {
                         default:
                             b.putString("Sexe", "Indefinit");
                     }
+
+                    //Agregamos un switch con el parametro conduce si/no
+                    String conduce;
+                    if(conducir.isChecked()){
+                        conduce = "Sí";
+                    }else{
+                        conduce= "No";
+                    }
+                    b.putString("Carnet", conduce);
+
+                    //Agregamos el seekbar con el parametro puntuacion
+
+                    int puntuacion;
+                    puntuacion= puntua.getProgress();
+                    b.putString("Puntos", String.valueOf(puntuacion));
+
+                    //Agregamos el RatingBar con el parametro valoracion
+                    float estrellas;
+                    estrellas= valorar.getRating();
+                    b.putString("Valoración",String.valueOf(estrellas));
+
                     i.putExtras(b);  //Afegisc l'objecte Bundle a l'Intent
                     startActivityForResult(i, SUBACTIVITY_1); // Cride al subactivity, amb l'Intent (que conté el Bundle)
                 }else{
@@ -112,6 +144,9 @@ public class Principal extends Activity {
         for (int i=0;i<radioGroupSexe.getChildCount();i++){
             radioGroupSexe.getChildAt(i).setEnabled(false);
         }
+        conducir.setEnabled(false);
+        valorar.setEnabled(false);
+        puntua.setEnabled(false);
         botoEnviaDades.setEnabled(false); //desactivem el botó
     }
 

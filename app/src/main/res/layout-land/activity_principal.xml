@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/rBValorar"
         android:layout_below="@+id/swConducir"
-        android:layout_alignEnd="@+id/b_enviaDades" />
+        android:layout_alignParentStart="true" />
 
     <SeekBar
         android:layout_width="wrap_content"
@@ -78,10 +78,9 @@
         android:id="@+id/sBPuntua"
         android:max="100"
         android:indeterminate="false"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/rBValorar"
-        android:layout_toStartOf="@+id/b_enviaDades"
-        android:layout_alignEnd="@+id/rBValorar" />
+        android:layout_alignTop="@+id/b_enviaDades"
+        android:layout_alignEnd="@+id/swConducir"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,7 +97,6 @@
         android:id="@+id/b_enviaDades"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

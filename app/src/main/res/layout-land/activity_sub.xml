@@ -37,8 +37,9 @@
         android:layout_height="wrap_content"
         android:text="Acabar"
         android:id="@+id/b_acabar"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,7 +54,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/tVNumvalor"
         android:layout_alignTop="@+id/tVValor"
-        android:layout_toStartOf="@+id/b_acabar" />
+        android:layout_above="@+id/tVNumPunt"
+        android:layout_toEndOf="@+id/tVCarnet" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +70,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tVNumPunt"
         android:layout_below="@+id/tVValor"
-        android:layout_toEndOf="@+id/tVValor" />
+        android:layout_alignEnd="@+id/tVValor" />
 
     <TextView
         android:layout_width="wrap_content"
